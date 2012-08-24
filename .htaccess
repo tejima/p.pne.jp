@@ -1,0 +1,19 @@
+RewriteEngine On
+
+RewriteRule d/([0-9]+)/([0-9A-Za-z]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$2&q=100&aoe=0&w=$1 [L]
+RewriteRule d/cmd/([0-9A-Za-z]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$1&q=100&aoe=0&w=425&q=100 [L]
+RewriteRule d/([0-9]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$1&q=100 [L]
+
+
+RewriteRule ss/([0-9]+)/([0-9A-Za-z]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$2&q=100&aoe=0&w=$1 [L]
+RewriteRule ss/cmd/([0-9A-Za-z]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$1&q=100&aoe=0&w=425&q=100 [L]
+RewriteRule ss/([0-9]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$1&q=100 [L]
+
+
+
+
+
+RewriteRule ([0-9]+)/([0-9A-Za-z]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$2&q=100&aoe=0&w=$1 [L]
+RewriteRule ([0-9]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$1&q=100 [L]
+RewriteRule cmd/([0-9A-Za-z]+\.(jpg|png)) ./index.php?src=http://dl.dropbox.com/u/151520/p/$1&q=100&aoe=0&w=425 [L]
+
