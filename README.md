@@ -8,8 +8,11 @@ PHP Online Image Resizer
 Herokuにデプロイすると、画像リサイズサーバーとして使える。
 
 http://p.pne.jp/d/201208250059.png
+
 http://p.pne.jp/d/400/201208250059.png
+
 http://p.pne.jp/d/300/201208250059.png
+
 http://p.pne.jp/d/30/201208250059.png
 
 このようにURLで横幅のサイズを指定することで、サーバ側で勝手にリサイズしてくれます。
