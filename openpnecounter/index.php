@@ -12,9 +12,9 @@ if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
         //<p id="total">Total: 4661</p> 
         preg_match('/Total:\\s(.*?)</',$str,$matches);
 
-        echo '{"item":[{"text":"OpenPNE set up","value":"';
+        echo '{"item":[{"text":"","value":"';
         echo $matches[1] ;
-        echo '"},{"text":"","value":""}]}';
+        echo '"},{"text":"","value":"0"}]}';
 
         // Cache the output to a file
         $fp = fopen($cachefile, 'w');
