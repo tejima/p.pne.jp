@@ -2,7 +2,7 @@
 $cachefile =  '/tmp/cachefile';
 $cachetime = 5 * 60;
 // Serve from the cache if it is younger than $cachetime
-if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
+if (false && file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
   include($cachefile);
 }else{
 	$result = "";
@@ -14,15 +14,15 @@ if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
   $total_num = $matches[1];
 
   //chtt=Daily
-  preg_match('/chtt=Daily(.*?)bvs/s',$str,$matches);
+  preg_match('/chtt=Weekly(.*?)bvs/s',$str,$matches);
   $line = $matches[1];
-  preg_match('/,([0-9]+)&/s',$line,$matches);
+  preg_match('/,([0-9]+),([0-9]+)&/s',$line,$matches);
   
   $oneday_num = $matches[1];
   $result .= '{"item":[{"text":"","value":"';
   $result .= $total_num;
   $result .= '"},{"text":"","value":"';
-  $result .= $total_num - $oneday_num;
+  $result .= $total_num - (int)($oneday_num * 2);
 	$result .= '"}]}';
 
   // Cache the output to a file
