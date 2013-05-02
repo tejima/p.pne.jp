@@ -5,21 +5,22 @@ $cachetime = 5 * 60;
 if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
     include($cachefile);
 }else{
-        ob_start(); // Start the output buffer
-        /* The code to dynamically generate the page goes here */
-        $fp = fopen("http://update.openpne.jp/graph.php", "r");
-        $str = fread($fp,5000);
-        //<p id="total">Total: 4661</p> 
-        preg_match('/Total:\\s(.*?)</',$str,$matches);
+	$result = "";
+  /* The code to dynamically generate the page goes here */
+  $fp = fopen("http://update.openpne.jp/graph.php", "r");
+  $str = fread($fp,5000);
+  //<p id="total">Total: 4661</p> 
+  preg_match('/Total:\\s(.*?)</',$str,$matches);
 
-        echo '{"item":[{"text":"","value":"';
-        echo $matches[1] ;
-        echo '"},{"text":"","value":"0"}]}';
+  $result += '{"item":[{"text":"","value":"';
+  $result += $matches[1];
+  $result += '"},{"text":"","value":"';
+  $result += $matches[1];
+	$result += '"}]}';
 
-        // Cache the output to a file
-        $fp = fopen($cachefile, 'w');
-        fwrite($fp, ob_get_contents());
-        fclose($fp);
-        ob_end_flush(); // Send the output to the browser
+  // Cache the output to a file
+  $fp = fopen($cachefile, 'w');
+  fwrite($fp, ob_get_contents());
+  fclose($fp);
 }
 ?>
