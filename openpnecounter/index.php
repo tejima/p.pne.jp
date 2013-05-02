@@ -2,7 +2,7 @@
 $cachefile =  '/tmp/cachefile';
 $cachetime = 5 * 60;
 // Serve from the cache if it is younger than $cachetime
-if (false && file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
+if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
   include($cachefile);
 }else{
 	$result = "";
