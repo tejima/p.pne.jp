@@ -22,5 +22,6 @@ if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
   $fp = fopen($cachefile, 'w');
   fwrite($fp, ob_get_contents());
   fclose($fp);
+  echo $result;
 }
 ?>
