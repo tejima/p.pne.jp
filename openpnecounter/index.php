@@ -1,9 +1,9 @@
 <?php
-$cachefile =  dirname(__FILE__) . '/tmp/chachefile';
+$cachefile =  '/tmp/cachefile';
 $cachetime = 5 * 60;
 // Serve from the cache if it is younger than $cachetime
 if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
-    include($cachefile);
+  include($cachefile);
 }else{
 	$result = "";
   /* The code to dynamically generate the page goes here */
@@ -11,16 +11,23 @@ if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
   $str = fread($fp,5000);
   //<p id="total">Total: 4661</p> 
   preg_match('/Total:\\s(.*?)</',$str,$matches);
+  $total_num = $matches[1];
 
-  $result += '{"item":[{"text":"","value":"';
-  $result += $matches[1];
-  $result += '"},{"text":"","value":"';
-  $result += $matches[1];
-	$result += '"}]}';
+  //chtt=Daily
+  preg_match('/chtt=Daily(.*?)bvs/s',$str,$matches);
+  $line = $matches[1];
+  preg_match('/,([0-9]+)&/s',$line,$matches);
+  
+  $oneday_num = $matches[1];
+  $result .= '{"item":[{"text":"","value":"';
+  $result .= $total_num;
+  $result .= '"},{"text":"","value":"';
+  $result .= $total_num - $oneday_num;
+	$result .= '"}]}';
 
   // Cache the output to a file
   $fp = fopen($cachefile, 'w');
-  fwrite($fp, ob_get_contents());
+  fwrite($fp, $result);
   fclose($fp);
   echo $result;
 }
