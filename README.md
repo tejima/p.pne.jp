@@ -22,3 +22,6 @@ http://p.pne.jp/d/30/201208250059.png
 OSX のautomaterと組み合わせて使うと、一連の流れを自動化できます。
 
  https://gist.github.com/1333667
+ 
+■追加機能
+・実験的にJSON
